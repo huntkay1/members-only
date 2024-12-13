@@ -3,17 +3,22 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 
 async function addUser(req, res, next) {
-    const user = req.body;
+    try {
+        const user = req.body;
 
-    const hashedPassword = await bcrypt.hash(user.password, 10);
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+    
+        await pool.query('INSERT INTO users ("firstname", "lastname", "username", "email", "password") VALUES ($1, $2, $3, $4, $5);', [
+            user.firstname, 
+            user.lastname,
+            user.username,
+            user.email,
+            hashedPassword
+        ]); 
+    } catch(err) {
+        console.log(err)
+    }
 
-    await pool.query('INSERT INTO users ("firstname", "lastname", "username", "email", "password") VALUES ($1, $2, $3, $4, $5);', [
-        user.firstname, 
-        user.lastname,
-        user.username,
-        user.email,
-        hashedPassword
-    ]); 
 }
 
 function signupGET(req, res) {

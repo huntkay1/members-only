@@ -13,9 +13,15 @@ async function addUser(req, res, next) {
         user.username,
         user.email,
         hashedPassword
-    ]);
-
-    
+    ]); 
 }
 
-module.exports = { addUser }
+function signupGET(req, res) {
+    res.render('signup');
+}
+
+async function signupPOST(req, res) {
+    console.log('test')
+}
+
+module.exports = { addUser, signupGET, signupPOST }

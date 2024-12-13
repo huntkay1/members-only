@@ -1,6 +1,6 @@
 const pool = require('../db/pool');
 const bcrypt = require('bcryptjs');
-
+const { validationResult } = require('express-validator');
 
 async function addUser(req, res, next) {
     const user = req.body;
@@ -21,7 +21,17 @@ function signupGET(req, res) {
 }
 
 async function signupPOST(req, res) {
-    console.log('test')
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        console.log(errors);
+        return res.render('signup', {
+            errors: errors.array(),
+            data: req.body,
+        })
+    }
+
+    await addUser(req, res);
 }
 
 module.exports = { addUser, signupGET, signupPOST }

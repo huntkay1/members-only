@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 
 async function addUser(req, res, next) {
     try {
+
         const user = req.body;
 
         const hashedPassword = await bcrypt.hash(user.password, 10);
@@ -15,6 +16,8 @@ async function addUser(req, res, next) {
             user.email,
             hashedPassword
         ]); 
+
+        res.redirect('/');
     } catch(err) {
         console.log(err)
     }
@@ -39,4 +42,4 @@ async function signupPOST(req, res) {
     await addUser(req, res);
 }
 
-module.exports = { addUser, signupGET, signupPOST }
+module.exports = { signupGET, signupPOST }

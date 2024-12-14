@@ -4,7 +4,7 @@ const indexRouter = Router();
 
 
 indexRouter.get('/', (req, res) => {
-    res.render('index')
+    res.render('landing')
 })
 
 

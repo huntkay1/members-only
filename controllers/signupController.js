@@ -16,10 +16,9 @@ async function addUser(req, res, next) {
             user.email,
             hashedPassword
         ]); 
-
         res.redirect('/');
     } catch(err) {
-        console.log(err)
+        return next(err)
     }
 
 }

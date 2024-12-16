@@ -1,6 +1,5 @@
 const path = require('node:path');
 const express = require('express');
-const indexRouter = require('./routes/indexRouter')
 const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/loginRouter');
 
@@ -10,9 +9,14 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter)
 app.use('/sign-up', signupRouter)
-app.use('/login', loginRouter)
+app.use('/user', loginRouter)
+app.use('/home', (req, res) => {
+    res.render('home')
+})
+app.use('/', (req, res) => {
+    res.render('landing')
+})
 
 
 app.listen(3000, () => console.log('Listening on port 3000'));

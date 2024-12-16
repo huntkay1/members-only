@@ -11,11 +11,20 @@ loginRouter.use(session({ secret: 'cats', resave: false, saveUninitialized: fals
 loginRouter.use(passport.session());
 
 
-loginRouter.get('/', (req, res) => {
+loginRouter.get('/login', (req, res) => {
     res.render('login')
 });
 
-loginRouter.post('/', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/home'}))
+loginRouter.post('/login', passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/login'}));
+
+loginRouter.get('/log-out', (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    });
+});
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -46,7 +55,6 @@ passport.deserializeUser(async (id, done) => {
     try {
         const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
         const user = rows[0];
-
         done(null, user);
     } catch(err) {
         done(err);

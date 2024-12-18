@@ -2,6 +2,7 @@ const path = require('node:path');
 const express = require('express');
 const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/sessionRouter');
+const homeRouter = require('./routes/homeRouter')
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -11,9 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/sign-up', signupRouter)
 app.use('/user', loginRouter)
-app.use('/home', (req, res) => {
-    res.render('home')
-})
+app.use('/home', homeRouter)
 app.use('/', (req, res) => {
     res.render('landing')
 })

@@ -1,7 +1,7 @@
 const path = require('node:path');
 const express = require('express');
 const signupRouter = require('./routes/signupRouter');
-const loginRouter = require('./routes/loginRouter');
+const loginRouter = require('./routes/sessionRouter');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));

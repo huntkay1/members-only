@@ -5,19 +5,19 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const loginRouter = Router();
+const sessionRouter = Router();
 
-loginRouter.use(session({ secret: 'cats', resave: false, saveUninitialized: false}));
-loginRouter.use(passport.session());
+sessionRouter.use(session({ secret: 'cats', resave: false, saveUninitialized: false}));
+sessionRouter.use(passport.session());
 
 
-loginRouter.get('/login', (req, res) => {
+sessionRouter.get('/login', (req, res) => {
     res.render('login')
 });
 
-loginRouter.post('/login', passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/login'}));
+sessionRouter.post('/login', passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/login'}));
 
-loginRouter.get('/log-out', (req, res, next) => {
+sessionRouter.get('/log-out', (req, res, next) => {
     req.logout((err) => {
         if (err) {
             return next(err);
@@ -61,4 +61,4 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-module.exports = loginRouter
+module.exports = sessionRouter

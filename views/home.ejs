@@ -20,7 +20,7 @@
 
     <div class="messages-container"> 
         <% messages.forEach((message) => { %>
-            <%- include('messageCard', { message: message}); %>
+            <%- include('messageCard', { message: message, user: user.username}); %>
         <% });  %>
     </div>
 </body>

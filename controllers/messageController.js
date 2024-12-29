@@ -8,7 +8,7 @@ async function getHomePageWithMessages(req, res) {
 }
 
 async function postNewMessage(req, res) {
-    const message = req.body;
+    const message = req.body.message;
     const username = req.user;
     const currentDate = new Date().toLocaleString('en-US');;
     

@@ -7,11 +7,10 @@
 </head>
 <body>
     <a href="/user/log-out"><button>Log Out</button></a>
-    <a href="/home/new-post"><button>New Post</button></a>
     <h1>Home</h1>
 
     <h1><%= user.username %></h1>
-    <form class="new-post"  method="POST" action="/">
+    <form class="new-post"  method="POST" action="/home">
         <div>
             <lable for="message">message</lable>
             <input type="text" id="message" name="message">

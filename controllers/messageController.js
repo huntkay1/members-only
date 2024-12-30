@@ -9,7 +9,7 @@ async function getHomePageWithMessages(req, res) {
 
 async function postNewMessage(req, res) {
     const message = req.body.message;
-    const username = req.user;
+    const username = req.user.username;
     const currentDate = new Date().toLocaleString('en-US');;
     
     await pool.query('INSERT INTO messages ("text", "username", "add") VALUES ($1, $2, $3);', [

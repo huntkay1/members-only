@@ -2,8 +2,14 @@
 <div class="card">
     
     <div>
-        <h2><%= user %></h2>
+        <h2><%= message.username %></h2>
         <p><%= message.add %></p>
         <p><%= message.text %></p>
+        <% if (message.username === locals.user.username)  {%>
+            <div>
+                <button>Delete</button>
+                <button>Edit</button>
+            </div>
+        <% } %>
     </div>
 </div>

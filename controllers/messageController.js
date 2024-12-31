@@ -20,4 +20,11 @@ async function postNewMessage(req, res) {
     res.redirect('/home');
 }
 
-module.exports = {getHomePageWithMessages, postNewMessage}
+async function deleteMessage(req, res) {
+    const id = req.params.id;
+
+    await pool.query('DELETE FROM messages WHERE id = $1', [id]);
+    res.redirect('/home')
+}
+
+module.exports = {getHomePageWithMessages, postNewMessage, deleteMessage}

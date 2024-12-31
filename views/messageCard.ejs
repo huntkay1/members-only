@@ -7,8 +7,12 @@
         <p><%= message.text %></p>
         <% if (message.username === locals.user.username)  {%>
             <div>
-                <button>Delete</button>
-                <button>Edit</button>
+                <form action="/home/<%= message.id %>/delete" method="POST">
+                    <button>Delete</button>
+                </form>
+                <form action="/home/<%= message.id %>/edit" method="POST">
+                    <button>Edit</button>
+                </form>
             </div>
         <% } %>
     </div>

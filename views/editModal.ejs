@@ -1,18 +1,24 @@
 <div id="modal-background"></div>
-<div id="modal">
-    <p>This is a popup</p>
+<section id="modal">
+    <form>
+        <lable>Edit Message</lable>
+        <input type="text" id="editMessageBox">
+    </form>
     <button onClick="closeModal(event)">&times;</button>
-</div>
+</section>
 
 
 
 <script>
     const modal = document.getElementById('modal');
-    const modalBackground = document.getElementById('modal-background')
-    function openModal(event) {
+    const modalBackground = document.getElementById('modal-background');
+    const editMessageBox = document.getElementById('editMessageBox');
+
+    function openModal(event, messageText) {
         event.preventDefault();
         modal.classList.add('visible');
         modalBackground.classList.add('visible');
+        editMessageBox.value = messageText;
     }
 
     function closeModal() {

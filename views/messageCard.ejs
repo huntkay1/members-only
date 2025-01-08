@@ -1,6 +1,3 @@
-<script>
-
-</script>
 
 <div class="card">
     
@@ -14,10 +11,11 @@
                     <button>Delete</button>
                 </form>
                 <form>
-                    <button name="modal" value="open" onClick="openModal(event)">Edit</button>
+                    <button name="modal" value="open" onClick="openModal(event, '<%= message.text %>')">Edit</button>
                 </form>
             </div>
         <% } %>
     </div>
+
 </div>
 

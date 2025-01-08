@@ -1,0 +1,22 @@
+<div id="modal-background"></div>
+<div id="modal">
+    <p>This is a popup</p>
+    <button onClick="closeModal(event)">&times;</button>
+</div>
+
+
+
+<script>
+    const modal = document.getElementById('modal');
+    const modalBackground = document.getElementById('modal-background')
+    function openModal(event) {
+        event.preventDefault();
+        modal.classList.add('visible');
+        modalBackground.classList.add('visible');
+    }
+
+    function closeModal() {
+        modal.classList.remove('visible');
+        modalBackground.classList.remove('visible');
+    }
+</script>

@@ -1,9 +1,36 @@
-
-
-#edit-popup {
-    display: none;
+body {
+    height: 100vh;
 }
 
-#edit-popup.visible {
+#modal {
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    width: 50vw;
+    height:40vh; 
+    margin-inline: auto;
+}
+
+#modal.visible {
     display: block;
 }
+
+#modal-background {
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:rgba(0,0,0,0.2);
+}
+
+#modal-background.visible {
+    display: block;
+}
+
+

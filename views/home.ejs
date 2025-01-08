@@ -25,18 +25,10 @@
         <% });  %>
     </div>
 
-    <div id="edit-popup">
-        <p>This is a popup</p>
-        <button onClick="closeModal(event)">X</button>
+    <div>
+        <%- include ('editModal') %>
     </div>
 
 </body>
-
-<script>
-    function closeModal() {
-        const modal = document.getElementById('edit-popup');
-        modal.classList.remove('visible');
-    }
-</script>
 
 </html>

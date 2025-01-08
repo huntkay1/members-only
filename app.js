@@ -1,4 +1,5 @@
 const path = require('node:path');
+const assetsPath = path.join(__dirname, "public"); 
 const express = require('express');
 const signupRouter = require('./routes/signupRouter');
 const homeRouter = require('./routes/homeRouter');
@@ -9,6 +10,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const app = express();
+
+app.use(express.static(assetsPath));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

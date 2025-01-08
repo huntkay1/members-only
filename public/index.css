@@ -1,0 +1,9 @@
+
+
+#edit-popup {
+    display: none;
+}
+
+#edit-popup.visible {
+    display: block;
+}

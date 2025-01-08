@@ -1,3 +1,10 @@
+<script>
+    function openModal(event) {
+        event.preventDefault();
+        const modal = document.getElementById('edit-popup');
+        modal.classList.add('visible')
+    }
+</script>
 
 <div class="card">
     
@@ -10,10 +17,11 @@
                 <form action="/home/<%= message.id %>/delete" method="POST">
                     <button>Delete</button>
                 </form>
-                <form action="/home/<%= message.id %>/edit" method="POST">
-                    <button>Edit</button>
+                <form>
+                    <button name="modal" value="open" onClick="openModal(event)">Edit</button>
                 </form>
             </div>
         <% } %>
     </div>
 </div>
+

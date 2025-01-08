@@ -11,7 +11,7 @@
                     <button>Delete</button>
                 </form>
                 <form>
-                    <button name="modal" value="open" onClick="openModal(event, '<%= message.text %>')">Edit</button>
+                    <button name="modal" onClick="openModal(event, '<%= message.text %>', '<%= message.id %>')">Edit</button>
                 </form>
             </div>
         <% } %>

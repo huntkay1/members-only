@@ -27,6 +27,13 @@ async function deleteMessage(req, res) {
     res.redirect('/home')
 }
 
+async function editMessage(req, res) {
+    const updatedMessage = req.body.messageText;
+    const messageId = req.params.messageId
 
+    await pool.query('UPDATE messages SET text = $1 WHERE id = $2', [updatedMessage, messageId])
+    res.redirect('/home')
 
-module.exports = {getHomePageWithMessages, postNewMessage, deleteMessage}
+}
+
+module.exports = {getHomePageWithMessages, postNewMessage, deleteMessage, editMessage}

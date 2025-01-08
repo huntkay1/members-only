@@ -1,8 +1,10 @@
 <div id="modal-background"></div>
 <section id="modal">
-    <form>
+    <form method="POST" action="" id="editForm">
         <lable>Edit Message</lable>
-        <input type="text" id="editMessageBox">
+        <input type="text" id="editMessageBox" name="messageText">
+
+        <button onClick="closeModal()">Done</button>
     </form>
     <button onClick="closeModal(event)">&times;</button>
 </section>
@@ -13,16 +15,19 @@
     const modal = document.getElementById('modal');
     const modalBackground = document.getElementById('modal-background');
     const editMessageBox = document.getElementById('editMessageBox');
+    const editForm = document.getElementById('editForm');
 
-    function openModal(event, messageText) {
+    function openModal(event, messageText, messageId) {
         event.preventDefault();
+        editForm.action = `/home/${messageId}/edit`; //Dynamically updates the action url based on the messageId sent from edit button click event
         modal.classList.add('visible');
         modalBackground.classList.add('visible');
-        editMessageBox.value = messageText;
+        editMessageBox.value = messageText; //loads the input box with the value of the message to be edited
     }
 
     function closeModal() {
         modal.classList.remove('visible');
         modalBackground.classList.remove('visible');
     }
+
 </script>

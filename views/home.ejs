@@ -7,27 +7,34 @@
     <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <a href="/user/log-out"><button>Log Out</button></a>
-    <h1>Home</h1>
+    <header>
+        <nav>
+            <h1>Mssg.</h1>
+            <a href="/user/log-out"><button>Log Out</button></a>
+        </nav>
+        <section class="user-info">
+                <div class="prof-pic"></div>
+                <h2><%= user.username %></h2>
+        </section>
+    </header>
 
-    <h1><%= user.username %></h1>
-    <form class="new-post"  method="POST" action="/home">
-        <div>
-            <lable for="message">message</lable>
-            <input type="text" id="message" name="message">
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    <main>
+        <form class="new-post"  method="POST" action="/home">
+            <textarea type="text" id="message" name="message" placeholder="new message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    
+        <section class="messages-container"> 
+            <% messages.forEach((message) => { %>
+                <%- include('messageCard', { message: message }); %>
+            <% });  %>
+        </section>
+    
+        <section>
+            <%- include ('editModal') %>
+        </section>
+    </main>
 
-    <section class="messages-container"> 
-        <% messages.forEach((message) => { %>
-            <%- include('messageCard', { message: message }); %>
-        <% });  %>
-    </section>
-
-    <section>
-        <%- include ('editModal') %>
-    </section>
 
 </body>
 

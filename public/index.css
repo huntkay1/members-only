@@ -1,5 +1,96 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: rgba(243,247,255,1);
+}
+
 body {
-    height: 100vh;
+    background: rgb(212,177,247);
+    background: -moz-linear-gradient(180deg, rgba(212,177,247,1) 0%, rgba(243,247,255,1) 55%);
+    background: -webkit-linear-gradient(180deg, rgba(212,177,247,1) 0%, rgba(243,247,255,1) 55%);
+    background: linear-gradient(180deg, rgba(212,177,247,1) 0%, rgba(243,247,255,1) 55%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d4b1f7",endColorstr="#f3f7ff",GradientType=1);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    /* background-attachment: fixed; */
+}
+
+header {
+    display: flex; 
+    flex-direction: column;
+    padding: 0 5vw;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.user-info {
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prof-pic {
+    background-image: url('bmo-prof.jpg');
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+main {
+    place-self: center;
+}
+
+.new-post {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new-post textarea {
+    width: 70%;
+    border: none;
+    border-radius: 20px;
+    height: 20px;
+    background-color: #f9fff7;
+    padding: 20px 20px;
+    transition: height ease-in-out 750ms;
+    resize: none;
+}
+
+textarea:focus {
+    height: 100px;
+    outline: none;
+}
+
+.card {
+    background-color: #f9fff7;
+    width: 40vw;
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.messages-container {
+    margin-top: 30px;
+    display: grid;
+    gap: 30px;
 }
 
 #modal {
